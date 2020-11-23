@@ -1,0 +1,26 @@
+---
+- name: Borgbackup
+  hosts: client
+  become: true
+  
+  tasks:
+    - name: Copy service 
+      copy:
+        src: /vagrant/service/backup.service
+        dest: /etc/systemd/system/backup.service
+        remote_src: yes
+
+    - name: Copy timer 
+      copy:
+        src: /vagrant/service/backup.timer
+        dest: /etc/systemd/system/backup.timer
+        remote_src: yes
+
+    - name: Change permissions
+      file: 
+        path: /vagrant/scripts/backup.sh
+        mode: u+x,g+x,o+x
+    
+    - name: reload systemd
+      systemd:
+        daemon_reload: yes

@@ -1,0 +1,10 @@
+[Unit]
+Description=Timer for backup.service
+Requires=backup.service
+
+[Timer]
+Unit=monitor.service
+OnUnitActiveSec=5m
+
+[Install]
+WantedBy=timers.target

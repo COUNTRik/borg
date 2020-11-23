@@ -1,0 +1,9 @@
+[Unit]
+Description=Service for borgbackup etc files
+
+[Service]
+Type=oneshot
+ExecStart=/vagrant/scripts/backup.sh
+
+[Install]
+WantedBy=multi-user.target

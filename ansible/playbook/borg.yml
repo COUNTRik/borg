@@ -1,0 +1,29 @@
+---
+- name: Install package all
+  hosts: all
+  become: true
+  
+  tasks:
+    - name: Install EPEL 
+      yum:
+        name: epel-release
+        state: latest
+      tags:
+        - epel
+
+    - name: Install user package
+      yum:
+        name:
+          - vim
+          - mc
+        state: latest
+      tags:
+        - package
+
+    - name: Install borgbackup
+      yum:
+        name:
+          - borgbackup
+        state: latest
+      tags:
+        - borgbackup
