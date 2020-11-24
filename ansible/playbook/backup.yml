@@ -18,9 +18,30 @@
 
     - name: Change permissions
       file: 
-        path: /vagrant/scripts/backup.sh
+        path: /vagrant/scripts/borg.sh
         mode: u+x,g+x,o+x
     
     - name: reload systemd
       systemd:
         daemon_reload: yes
+    
+    - name: Start service backup
+      systemd:
+        name: backup.service
+        state: started
+    
+    - name: Enable service backup
+      systemd:
+        name: backup.service
+        enabled: yes
+    
+    - name: Start timer backup
+      systemd:
+        name: backup.timer
+        state: started
+
+    - name: Enable timer backup
+      systemd:
+        name: backup.timer
+        enabled: yes
+    

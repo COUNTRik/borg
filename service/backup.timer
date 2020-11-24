@@ -3,8 +3,8 @@ Description=Timer for backup.service
 Requires=backup.service
 
 [Timer]
-Unit=monitor.service
-OnUnitActiveSec=5m
+Unit=backup.service
+OnUnitActiveSec=5min
 
 [Install]
 WantedBy=timers.target

@@ -3,7 +3,7 @@ Description=Service for borgbackup etc files
 
 [Service]
 Type=oneshot
-ExecStart=/vagrant/scripts/backup.sh
+ExecStart=/vagrant/scripts/borg.sh
 
 [Install]
 WantedBy=multi-user.target
